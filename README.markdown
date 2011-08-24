@@ -42,6 +42,7 @@ cc by (CreativeCommons Attribution licenses)
 However this exception is only given if you drop me an email, with the link to deployment.
 + This exception however does not hold in any source release of which this code is used (Its stated in the cc license btw), hence credit should be given in this case.
 + These license requirments would be applied to all forks / merges / derivatives, of this work.
+
 ### additional notes:
 I may update to add an additional open source licenses in the future / on requested =)
 
