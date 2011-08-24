@@ -29,8 +29,8 @@ License?
 --------
 ### author:		
 picoCreator AKA Eugene Cheah
-### email		
-pico.creator@gmail.com
+### email:
+pico.creator{at}gmail.com
 ### website:		
 blog.pic-o.com
 ### copyright:	
