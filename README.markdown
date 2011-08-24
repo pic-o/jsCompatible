@@ -27,19 +27,19 @@ You may also notice, each hack is nested around a single function, which may ret
 
 License?
 --------
-### author: ###		
+### author:		
 picoCreator AKA Eugene Cheah
-### email ###		
+### email		
 pico.creator@gmail.com
-### website: ###		
+### website:		
 blog.pic-o.com
-### copyright: ###	
+### copyright:	
 cc by (CreativeCommons Attribution licenses)
 [http://creativecommons.org/licenses/by/3.0/]
-### cc notes: ###
+### cc notes:
 While crediting me (Eugene Cheah AKA picoCreator) is required for derivatives of this work, i do give an exception for using this on a live website, 
 (eg, using this for your blog in the background) in which crediting every single file is impractical (even for commercial sites).
 Though i request you do drop an email if you using this for a live site (for my curiosity, to see where this code goes)
 I do however require credit to be given in any source release of which this code is used (Its stated in the cc license btw)
-### Additional notes: ###
-Additionally, I may update the license to other open source licenses in the future / on requested =)
+### additional notes:
+I may update to add an additional open source licenses in the future / on requested =)
