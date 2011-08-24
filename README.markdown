@@ -34,8 +34,8 @@ pico.creator@gmail.com
 ### website: ###		
 blog.pic-o.com
 ### copyright: ###	
-cc by [CreativeCommons Attribution licenses]
-http://creativecommons.org/licenses/by/3.0/
+cc by (CreativeCommons Attribution licenses)
+[http://creativecommons.org/licenses/by/3.0/]
 ### cc notes: ###
 While crediting me (Eugene Cheah AKA picoCreator) is required for derivatives of this work, i do give an exception for using this on a live website, 
 (eg, using this for your blog in the background) in which crediting every single file is impractical (even for commercial sites).
