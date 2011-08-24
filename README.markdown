@@ -37,9 +37,12 @@ blog.pic-o.com
 cc by (CreativeCommons Attribution licenses)
 [http://creativecommons.org/licenses/by/3.0/]
 ### cc notes:
-While crediting me (Eugene Cheah AKA picoCreator) is required for derivatives of this work, i do give an exception for using this on a live website, 
-(eg, using this for your blog in the background) in which crediting every single file is impractical (even for commercial sites).
-Though i request you do drop an email if you using this for a live site (for my curiosity, to see where this code goes)
-I do however require credit to be given in any source release of which this code is used (Its stated in the cc license btw)
++ Crediting me (Eugene Cheah AKA picoCreator) is required for derivatives of this work, UNLESS...
++ An exception is given for using this on a live website, (eg, using this for your blog in the background) in which crediting every single source file directly may be impractical (even for commercial sites). 
+However this exception is only given if you drop me an email, with the link to deployment.
++ This exception however does not hold in any source release of which this code is used (Its stated in the cc license btw), hence credit should be given in this case.
++ These license requirments would be applied to all forks / merges / derivatives, of this work.
 ### additional notes:
 I may update to add an additional open source licenses in the future / on requested =)
+
+Remember to drop an email if you are using this for a live site, ty (for my curiosity, to see where this code goes)
