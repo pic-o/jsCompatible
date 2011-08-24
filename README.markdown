@@ -32,7 +32,7 @@ picoCreator AKA Eugene Cheah
 ### email:
 pico.creator{at}gmail.com
 ### website:		
-blog.pic-o.com
+www.pic-o.com/blog
 ### copyright:	
 cc by (CreativeCommons Attribution licenses)
 [http://creativecommons.org/licenses/by/3.0/]
