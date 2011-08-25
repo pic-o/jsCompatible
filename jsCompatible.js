@@ -7,6 +7,9 @@ source code
 Ensures that, as much as possible, the missing functionalities of the client javascript browser are "fixed".
 This prioritize mainly function calls, that may be a core of your script, and not the modern HTML5 features.
 
+-Website:
+http://pic-o.com/blog/2011/08/jscompatible/
+
 -Main refrences:
 -ToDo:
 Collect, the functionalitiy check results. So that programs can check for dependencies against it.
