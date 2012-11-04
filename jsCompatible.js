@@ -1,48 +1,59 @@
 /********************************************************************************************************************************************************** 
-source code
--name:	jsCompatible
--type: 	java script	(Not JSON-Script compliant)
--vers:	alpha 1 (24 July 2011)
--Discription:
-Ensures that, as much as possible, the missing functionalities of the client javascript browser are "fixed".
-This prioritize mainly function calls, that may be a core of your script, and not the modern HTML5 features.
+File: jsCompatible.js
+Fixes gaps in various javascript browsers.
 
--Website:
-http://pic-o.com/blog/2011/08/jscompatible/
+Script type: 	
+javascript, global self loading script (Not JSON-Script compliant)
 
--Main refrences:
--ToDo:
-Collect, the functionalitiy check results. So that programs can check for dependencies against it.
-Consider, the usage of variable flags to show the result : exists, failed, hacked, partial-hack : at each level?
+Version:	
+Alpha 1.2 (05 Nov 2012)
 
--future suggestion:
--BUGS:
--documentation:		
-*************************************************************** Author Details & CopyRight ****************************************************************
-author: 	picoCreator
-email:		pico.creator@gmail.com
-website:	blog.pic-o.com
-copyright:	cc by [CreativeCommons Attribution licenses]
+Longer Discription:
+Ensures that, as much as possible, the missing functionalities of the client JavaScript browser are "fixed".
+This prioritizes mainly function calls, which may be a core of many script, and not the modern HTML5 features.
+
+Main refrences:
+https://developer.mozilla.org/en-US/docs/JavaScript
+
+ToDo:
+
+Future suggestion:
+- Collect the functionalitiy check results. So that programs can check for dependencies against.
+
+BUGS: 
+
+Notes:	
+
+***********************************************************************************************************************************************************
+Author Details & CopyRight:
+author		- picoCreator AKA Eugene Cheah
+email		- pico.creator@gmail.com
+website		- blog.pic-o.com
+copyright	- cc by [CreativeCommons Attribution licenses]
 			http://creativecommons.org/licenses/by/3.0/
 			
-cc notes:	
-	+ Crediting me (Eugene Cheah AKA picoCreator) is required for derivatives of this work, UNLESS...
-	+ An exception is given for using this on a live website, (eg, using this for your blog in the background) in which crediting every single source file directly may be impractical (even for commercial sites). 
-	However this exception is only given if you drop me an email, with the link to deployment.
-	+ This exception however does not hold in any source release of which this code is used (Its stated in the cc license btw), hence credit should be given in this case.
-	+ These license requirments would be applied to all forks / merges / derivatives, of this work.
+CC notes: 	
++ Crediting me (Eugene Cheah AKA picoCreator) is required for derivatives of this work, UNLESS...
++ An exception is given for using this on a live deployment, (eg, using this for your blog in the background) in which crediting every single page may be impractical (even for commercial sites). 
++ However this exception is only given if you drop me an email, with the link to deployment.
++ This exception however does not hold in any source release of which this code is used (Its stated in the cc license btw), hence credit should be given in this case.
++ These license requirments would be applied to all forks / merges / derivatives, of this work.
 
-additional notes:
-	+ I may update to add an additional open source licenses in the future / on requested =)
-	+ Remember to drop an email if you are using this for a live site, ty (for my curiosity, to see where this code goes)
+Additional Copyright Notes:
++ I may update to add an additional open source licenses in the future / on requested =)
++ Remember to drop an email if you are using this for a live site, ty. (for my curiosity, to see where this code goes)
++ This copyright applies only to the file "jsCompatible.js", NOT the whole asac framework
 **********************************************************************************************************************************************************/
 
-/***********************************************************
-* console hack : Ensures console functions calls are handled
-* gracefully, in event it is not built/enabled client-side.
-************************************************************/
 (function(){
-	if(!window.console)	console 		= {};
+/***************************************************************************
+* Function: console
+* Console hack, Ensures console functions calls are handled
+* gracefully (silent ignore), in event it is not built/enabled client-side.
+* 
+* (console . log/warn/error/info supported)
+****************************************************************************/
+	if(!window.console)	window.console 	= {};
 	if(!console.log) 	console.log 	= function(){};
 	if(!console.warn) 	console.warn 	= function(){};
 	if(!console.error)	console.error 	= function(){};
@@ -50,12 +61,13 @@ additional notes:
 	return true;	//Ends hacking -> Success / Exists
 })();
 
-/***********************************************************
+/***************************************************************************
+* Function: getElementByID
 * DOM functionality hacking of document.getElementByID
 * Returns true / false on hack check success
 *
-* Modifyed from: http://www.netlobo.com/javascript_get_element_id.html
-***********************************************************/
+* Modified from: http://www.netlobo.com/javascript_get_element_id.html
+***************************************************************************/
 (function () { 
     if (!document.getElementById) {
 		if (document.all) {
@@ -70,13 +82,18 @@ additional notes:
 	return true;	//Ends hacking -> Exists
 })();
 
-/***********************************************************
+/*******************************************************************
+* [Removed] This is a non-standard feature in any browser,
+* Hence there is a reasonable chance of future potential conflict
+* And the consequence of massive code refactoring.
+*
 * Prototype Object.extend functionality check
 * Returns true / false on hack check success
 *
 * While, this is not part of the offical standard, 
 * there are dependencies on this framework that relies on it.
-************************************************************/
+********************************************************************/
+/*
 (function(){
 	//Ensures Object.extend works / exists
 	if (!Object.extend) {
@@ -92,9 +109,11 @@ additional notes:
 	}
 	return true;	//Ends hacking -> Exists
 })();
+*/
 
 /***********************************************************
-* Object.create functionality check [For outdated browsers]
+* Function: Object.create 
+* [For outdated browsers]
 * Returns true / false on hack check success
 ************************************************************/
 (function(){
@@ -110,7 +129,11 @@ additional notes:
 			}
 			var obj = new createFunc();
 			if(propertiesObject && Object(propertiesObject) === propertiesObject ) { //its an object
-				Object.extend(obj, propertiesObject); //Sets the properties
+				//Object.extend(obj, propertiesObject); //Sets the properties
+				//nested the extend function, since it was removed
+				for(var property in propertiesObject) {
+					obj[property] = propertiesObject[property];
+				}
 			}
 			return obj;
 		}
@@ -122,14 +145,22 @@ additional notes:
 })();
 
 /***********************************************************
-* Object.getPrototypeOf functionality check [For Opera]
+* Function: Object.getPrototypeOf 
+* [For Opera]
 * Returns true / false on hack check success
 ************************************************************/
 (function(){
 	//Ensures Object.getPrototypeOf works / exists
-	if (!Object.getPrototypeOf) {
-		Object.getPrototypeOf = function getPrototypeOf(o){
-			return o.__proto__;
+	if ( typeof Object.getPrototypeOf !== "function" ) {
+		if ( typeof "test".__proto__ === "object" ) {
+			Object.getPrototypeOf = function(object){
+				return object.__proto__;
+			};
+		} else {
+			Object.getPrototypeOf = function(object){
+				// May break if the constructor has been tampered with
+				return object.constructor.prototype;
+			};
 		}
 		return true;	//Ends hacking -> Success
 	
@@ -139,7 +170,8 @@ additional notes:
 })();
 
 /***********************************************************
-* Object.keys functionality check [For outdated browsers]
+* Function: Object.keys 
+* [For outdated browsers]
 * Returns true / false on hack check success
 ************************************************************/
 (function(){
@@ -160,7 +192,8 @@ additional notes:
 })();
 
 /***********************************************************
-* Function.prototype.bind functionality check [For Old browsers]
+* Function: Function.prototype.bind 
+* [For Old browsers]
 * Returns true / false on hack check success
 * Note: This is from MDN and not a fully functionality hack
 ************************************************************/
@@ -191,11 +224,12 @@ additional notes:
 	return true;	//Ends hacking -> Exists
 })();
 
-/***********************************************************
-* Array.prototype.indexOf functionality check [For Old browsers]
+/***********************************************************************************************************
+* Function: Array.prototype.indexOf functionality check 
+* [For Old browsers]
 * Returns true / false on hack check success
 * Note: This is from MDN (https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf)
-************************************************************/
+************************************************************************************************************/
 (function(){
 	if (!Array.prototype.indexOf) {
 		Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
@@ -235,11 +269,12 @@ additional notes:
 	return true;	//Ends hacking -> Exists
 })();
 
-/***********************************************************
-* Array.prototype.lastIndexOf functionality check [For Old browsers]
+/***********************************************************************************************************
+* Function: Array.prototype.lastIndexOf
+* [For Old browsers]
 * Returns true / false on hack check success
 * Note: This is from MDN (https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
-************************************************************/
+************************************************************************************************************/
 (function(){
 	if (!Array.prototype.lastIndexOf) {
 		Array.prototype.lastIndexOf = function(searchElement /*, fromIndex*/) {
@@ -279,3 +314,4 @@ additional notes:
 	}
 	return true;	//Ends hacking -> Exists
 })();
+
